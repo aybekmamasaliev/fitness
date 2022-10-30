@@ -1,0 +1,329 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@400;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.fitness_booking {
+  width: 230px;
+  height: 100px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #1d1617;
+}
+
+.every_body_can {
+  width: 200px;
+  height: 20px;
+  font-weight: 400;
+  font-size: 18px;
+  color: #7b6f72;
+  text-align: center;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 315px;
+  height: 60px;
+  left: 50%;
+  transform: translate(-50%);
+  background: linear-gradient(274.42deg, #92a3fd 0%, #9dceff 124.45%);
+  /* bottom: 200px; */
+  box-shadow: 0px 10px 22px rgba(149, 173, 254, 0.3);
+  border-radius: 99px;
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 16px;
+  color: #ffffff;
+  border: 0;
+}
+
+.get_str_btn {
+  bottom: 50px;
+}
+
+.formdiv_fivth {
+  margin-top: 13px;
+  height: 20px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  width: 20px;
+}
+
+.special_div_for_checkbox {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.special_div_for_checkbox > input {
+  display: flex;
+  align-items: center;
+  height: 16px;
+}
+
+.accept_text {
+  width: 244px;
+  height: 30px;
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 15px;
+  color: #ada4a5;
+}
+
+.formdiv_fivth input {
+  height: 16px;
+}
+
+.hey_there {
+  position: absolute;
+  top: 40px;
+  text-align: center;
+}
+
+.hey_ther {
+  position: absolute;
+  top: 40px;
+}
+
+.hey {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1d1617;
+}
+
+.wellcome {
+  font-weight: 700;
+  font-size: 20px;
+  color: #1d1617;
+  margin-top: 5px;
+}
+
+.login_btn {
+  bottom: 100px;
+}
+
+.register_btn {
+  bottom: 100px;
+}
+
+.login_btn img {
+  margin-right: 10px;
+}
+
+.register_now {
+  position: absolute;
+  bottom: 40px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #1d1617;
+}
+
+.reg {
+  color: #c58bf2;
+  text-decoration: none;
+}
+
+form div input {
+  width: 315px;
+  border-radius: 14px;
+  height: 50px;
+  /* background-color: red; */
+  /* position: relative; */
+  padding-left: 40px;
+  background: #f7f8f8;
+  border: 1px solid #f7f8f8;
+}
+
+.email {
+  position: absolute;
+  left: 15px;
+  top: 17px;
+}
+
+.eye {
+  position: absolute;
+  right: 15px;
+  top: 17px;
+}
+
+.formdiv_first {
+  margin-top: 30px;
+  position: relative;
+}
+
+.formdiv_second {
+  margin-top: 10px;
+  position: relative;
+}
+
+.formdiv_third {
+  margin-top: 15px;
+  position: relative;
+}
+
+.between_input {
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.between_input2 {
+  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 3px;
+  margin-bottom: 4px;
+}
+
+.formdiv_fourth {
+  position: relative;
+  margin-top: 0;
+}
+
+.forgot {
+  font-weight: 500;
+  font-size: 12px;
+  text-decoration-line: underline;
+  margin-top: 10px;
+}
+
+.forgot a {
+  color: #ada4a5;
+}
+
+form p {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 10px;
+  color: #ada4a5;
+  line-height: 15px;
+  text-align: left;
+}
+
+.your_password {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.enter_the_email {
+  height: 45px;
+  width: 245px;
+  margin-top: 29px;
+  padding-left: 15px;
+}
+
+.enter_the_email > p {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 15px;
+  color: #ada4a5;
+}
+
+.enter_the_email_sent > p {
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #7b6f72;
+  width: 250px;
+  margin-top: 18px;
+}
+
+.margin_top15 {
+  margin-top: 15px;
+}
+
+.appointment {
+  width: 315px;
+  height: 243px;
+  /* border: 1px solid red; */
+  position: relative;
+  border-radius: 16px;
+}
+
+.p_of_appointment {
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1d1617;
+  margin-left: 83px;
+  margin-top: 30px;
+}
+
+.close {
+  position: absolute;
+  top: 33px;
+  left: 34px;
+}
+
+.fitness_hall {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #1d1617;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.div_of_wath{
+  margin-left: 32px;
+  margin-top: 12px;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  width: 130px;
+}
+
+.today{
+font-family: 'Poppins';
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+color: #7B6F72;
+display: flex;
+align-items: center;
+}
+
+.btn_small{
+  width:255px;
+  height: 48px;
+  bottom: 30px;
+}
+
+.to_cancel{
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #1d1617;
+  margin-left: 13px;
+
+}
