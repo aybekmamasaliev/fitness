@@ -5,6 +5,10 @@ import CreateAccaunt from "../components/CreateAccaunt"
 import ForgotPassword from "../components/ForgotPassword"
 import CheckEmail from "../components/CheckEmail"
 import CreatePassword from "../components/CreatePassword"
+import ProfileFitness from "../components/ProfileFitness"
+import ScheduleUser from "../components/ScheduleUser"
+import ScheduleAppointment from "../components/ScheduleAppointment"
+import ScheduleCancel from "../components/ScheduleCancel"
 
 
 const routes = [
@@ -37,6 +41,26 @@ const routes = [
     path: "/password",
     name:"password",
     component: CreatePassword
+  },
+  {
+    path: "/profile",
+    name:"profile",
+    component: ProfileFitness
+  },
+  {
+    path: "/schedule",
+    name:"schedule",
+    component: ScheduleUser
+  },
+  {
+    path: "/scheduleappo",
+    name:"scheduleappo",
+    component: ScheduleAppointment
+  },
+  {
+    path: "/schedulecancel",
+    name:"schedulecancel",
+    component: ScheduleCancel
   }
 ]
 

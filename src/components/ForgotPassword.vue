@@ -1,28 +1,23 @@
 <template>
-    <div class="hey_there">
-        <p class="wellcome your_password">Create New Password</p>
-        <div>
+     <div class="hey_ther">
+          <p class="wellcome your_password">Forgot Your Password?</p>
+          <div>
+            <div class="enter_the_email">
+              <p>Enter the email associated with your account
+                and we will send an email with instructions to reset your password.</p>
+            </div>
             <form>
-                <div class="formdiv_first">
-                    <img src="../assets/media/Lock2.svg" alt="" class="email">
-                    <img src="../assets/media/Hide3.svg" alt="" class="eye">
-                    <input placeholder="Password" type="password">
-                </div>
-                <div class="between_input2">
-                    <p>Must be at least 8 characters</p>
-                </div>
-                <div class="formdiv_second">
-                    <img src="../assets/media/Lock2.svg" alt="" class="email">
-                    <img src="../assets/media/Hide3.svg" alt="" class="eye">
-                    <input placeholder="Password" type="password">
-                </div>
-                <div class="between_input2">
-                    <p>Both passwords must match </p>
-                </div>
+              <div class="formdiv_third">
+                <img src="../assets/media/Message1.svg" alt="" class="email" />
+                <input placeholder="Email" type="text" />
+              </div>
             </form>
+          </div>
         </div>
-    </div>
-    <router-link to="/"><button class="login_btn">Reset Password</button></router-link>
+        <router-link to="/check"><button class="register_btn">Register</button></router-link>
+        <p class="register_now">
+          Already have an account? <a href="#" class="reg">Login </a>
+        </p>
 </template>
 
 <script>

@@ -22,7 +22,6 @@ export default {
   position: relative;
   min-height: 730px;
   font-family: "Poppins";
-  border:1px solid red
 }
 
 
