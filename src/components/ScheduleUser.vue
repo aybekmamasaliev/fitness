@@ -1,9 +1,15 @@
 <template>
-    <div class="schedule">
+    <div class="schedule" >
         <div class="graph">
+          <div class="drop_down" v-if="visible">
+           <!-- <router-link to="/profile"><p class="text_drop_down">Profile</p></router-link> -->
+           <!-- <router-link to="/"> <p class="text_drop_down">LogOut</p></router-link> -->
+          <p class="text_drop_down" @click="redirect_profile">Profile</p>
+           <p class="text_drop_down" @click="redirect_home">LogOut</p>
+          </div>
             <p class="wellcome_back">Welcome Back,</p>
             <p class="user_name">Stefani Wong</p>
-            <img src="../assets/media/Notification1.svg" alt="" class="notification_img">
+            <img src="../assets/media/Notification1.svg" alt="" class="notification_img" v-on:click="change_vision">
             <div class="info_fitness margin_top_25">
                 <p style="color:black">You have no fitness appointment for today</p>
             </div>
@@ -14,7 +20,8 @@
                 <p>Fitness Hall 1 Load</p>
                 <router-link to="/scheduleappo"><button class="book">Book</button></router-link>
             </div>
-            <div class="persent_block"></div>
+            <div class="persent_block" v-on:click="display_none">
+            </div>
 
             <div class="halls">
                 <p>Fitness Hall 2 Load</p><button class="book">Cancel</button>
@@ -27,14 +34,65 @@
 
 <script>
 export default {
+  data(){
+    return{
+      visible:false
+    }
+  },
+  methods:{
+    change_vision(){
+      this.visible = !this.visible
+    },
+
+    redirect_profile(){
+      this.$router.push("/profile")
+    },
+
+    redirect_home(){
+      this.$router.push("/")
+      localStorage.clear()
+    }
+
+  }
 
 }
 </script>
 
 <style>
+a{
+  text-decoration: none;
+  color:black
+}
+
+.text_drop_down{
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 10px ;
+  padding-bottom: 10px ;
+  padding-left: 10px;
+  padding-right:10px;
+  cursor: pointer;
+}
+
+.text_drop_down:hover{
+  background: lightgray;
+  color:white
+}
+
+.drop_down{
+  min-width:100px;
+  min-height: 90px;
+  background: #F7F8F8;;
+  position: absolute;
+  right: 25px;
+  top:80px;
+  z-index: 2
+}
 
 .schedule{
-    width: 100%;
+  width: 100%;
   height: 100vh;
   background: #ffffff;
   border-radius: 40px;
@@ -75,6 +133,7 @@ export default {
   position: absolute;
   right: 0;
   top: 15px;
+  cursor:pointer
 }
 
 

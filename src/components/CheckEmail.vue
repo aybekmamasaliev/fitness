@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-    <router-link to="/password"><button class="register_btn">Register</button></router-link>
+    <router-link :to="{name: 'loginpage'}"><button class="register_btn">Back To Login</button></router-link>
 </template>
 
 <script>

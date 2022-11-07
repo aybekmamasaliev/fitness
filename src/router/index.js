@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import StartPage from '../components/StartPage.vue'
-import WellcomeBack from '../components/WellcomeBack.vue'
+import LoginPage from '../components/LoginPage.vue'
 import CreateAccaunt from "../components/CreateAccaunt"
 import ForgotPassword from "../components/ForgotPassword"
 import CheckEmail from "../components/CheckEmail"
@@ -18,13 +18,13 @@ const routes = [
     component: StartPage
   },
   {
-    path: '/wellcome',
-    name: 'wellcome',
-    component: WellcomeBack
+    path: '/loginpage',
+    name: 'loginpage',
+    component: LoginPage
   },
   {
-    path: '/create',
-    name: 'create',
+    path: '/register',
+    name: 'register',
     component: CreateAccaunt
   },
   {
@@ -38,7 +38,7 @@ const routes = [
     component: CheckEmail
   },
   {
-    path: "/password",
+    path: "/password/:token",
     name:"password",
     component: CreatePassword
   },

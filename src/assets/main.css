@@ -31,6 +31,7 @@
 
 button {
   display: flex;
+  cursor:pointer;
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -161,6 +162,7 @@ form div input {
   position: absolute;
   right: 15px;
   top: 17px;
+  cursor:pointer
 }
 
 .formdiv_first {

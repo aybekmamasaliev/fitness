@@ -6,7 +6,7 @@
         <div class="every_body_can">
             <p>Everybody Can Train</p>
         </div>
-        <router-link to="/wellcome"><button class="get_str_btn">Get Started</button></router-link>
+        <router-link to="/loginpage"><button class="get_str_btn">Get Started</button></router-link>
     </div>
 </template>
 <script>

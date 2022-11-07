@@ -21,21 +21,21 @@
                 </div>
                 <div class="formdiv_fourth">
                     <img src="../assets/media/Lock2.svg" alt="" class="email" />
-                    <img src="../assets/media/Hide3.svg" alt="" class="eye" />
-                    <input placeholder="Password" type="password" />
+                    <img src="../assets/media/Hide3.svg" alt="" class="eye" v-on:click="old_password"/>
+                    <input placeholder="Password" :type="type_of_old_password" />
                 </div>
                 <div class="formdiv_fourth margin_top15">
                     <img src="../assets/media/Lock2.svg" alt="" class="email" />
-                    <img src="../assets/media/Hide3.svg" alt="" class="eye" />
-                    <input placeholder="Old Password" type="password" />
+                    <img src="../assets/media/Hide3.svg" alt="" class="eye" v-on:click="new_password"/>
+                    <input placeholder="Old Password" :type="type_of_new_password" />
                 </div>
                 <div class="between_input2">
                     <p>Must be at least 8 characters</p>
                 </div>
                 <div class="formdiv_fourth">
                     <img src="../assets/media/Lock2.svg" alt="" class="email" />
-                    <img src="../assets/media/Hide3.svg" alt="" class="eye" />
-                    <input placeholder="Confirm New Password" type="password" />
+                    <img src="../assets/media/Hide3.svg" alt="" class="eye" v-on:click="new_password_conf"/>
+                    <input placeholder="Confirm New Password" :type="type_of_new_password_conf" />
                 </div>
                 <div class="between_input2">
                     <p>Both passwords must match</p>
@@ -50,7 +50,24 @@
 
 <script>
 export default {
-
+    data(){
+        return{
+            type_of_old_password:"password",
+            type_of_new_password:"password",
+            type_of_new_password_conf:"password"
+        }
+    },
+    methods:{
+        old_password(){
+            this.type_of_old_password = this.type_of_old_password === "password" ? "text" : "password"
+        },
+        new_password(){
+            this.type_of_new_password = this.type_of_new_password === "password" ? "text" : "password"
+        },
+        new_password_conf(){
+            this.type_of_new_password_conf = this.type_of_new_password_conf === "password" ? "text" : "password"
+        }
+    }
 }
 </script>
 
