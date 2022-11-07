@@ -14,7 +14,7 @@
       </form>
     </div>
   </div>
-  <router-link to="/check"><button class="register_btn" v-on:click="load">Send Instructions</button></router-link>
+  <button class="register_btn" v-on:click="load">Send Instructions</button>
   <p class="register_now">
     Already have an account? <router-link to="/loginpage" class="reg">Login </router-link>
   </p>
@@ -29,6 +29,10 @@ export default {
   },
   methods: {
     load() {
+      if(!this.email){
+        alert("Please enter your email")
+        return
+      }
       let response_email = { email: this.email }
       fetch(process.env.VUE_APP_API_DOMAIN + "/auth/forgot_password/", {
         method: "POST",
@@ -40,6 +44,7 @@ export default {
         body: JSON.stringify(response_email)
       })
         .then(res => console.log(res.json()))
+        this.$router.push("/check")
     }
   }
 }

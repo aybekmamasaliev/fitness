@@ -51,7 +51,6 @@ export default {
             })
                 .then(response => response.json())
                 .then((response) => {
-                    console.log(response)
                     const { access, refresh } = response
                     localStorage.setItem("access", access)
                     localStorage.setItem("refresh", refresh)

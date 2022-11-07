@@ -59,6 +59,16 @@ export default {
       }
     },
     load() {
+      if(!this.arr.password){
+        alert("please type a new password")
+        return
+      }else if(!this.arr.password_confirmation){
+        alert("pleace confirm your password")
+        return
+      }else if(this.arr.password !== this.arr.password_confirmation){
+        alert("password and confirm passwords does not match")
+        return
+      }
       fetch(process.env.VUE_APP_API_DOMAIN + "/auth/reset_password/", {
         method: "POST",
         mode: "cors",
@@ -67,6 +77,14 @@ export default {
           "Content-type": "application/json; charset=UTF-8"
         },
         body: JSON.stringify(this.arr)
+      })
+      .then((res)=>{
+        if(res.status === 200){
+          this.$router.push("/loginpage")
+        }else{
+          alert("token not found")
+        }
+       
       })
     }
   }
