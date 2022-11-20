@@ -2,38 +2,26 @@
   <div class="schedule">
     <div class="graph">
       <div class="drop_down" v-if="visible">
-        <!-- <router-link to="/profile"><p class="text_drop_down">Profile</p></router-link> -->
-        <!-- <router-link to="/"> <p class="text_drop_down">LogOut</p></router-link> -->
         <p class="text_drop_down" @click="redirect_profile">Profile</p>
         <p class="text_drop_down" @click="redirect_home">LogOut</p>
       </div>
-      <p class="wellcome_back">Welcome Back,</p>
+      <p class="wellcome_back" @click="show">Welcome Back,</p>
       <p class="user_name">{{ first_name }} {{ last_name }}</p>
       <img src="../assets/media/Notification1.svg" alt="" class="notification_img" v-on:click="change_vision">
       <div class="info_fitness margin_top_25" v-if="!appointments.length">
         <p style="color:black" @click="capitalize">You have no fitness appointment for today</p>
       </div>
-        <div class="info_fitness" v-for = "item in appointments" :key="item.id">
-          <p>You have fitness appointment at {{ item.appointment }} in hall_{{ item.fitness_hall }}</p>
-        </div>
-      <div class="halls">
-        <p>Fitness Hall 1 Load</p>
-        <router-link to="/scheduleappo"><button class="book">Book</button></router-link>
+      <div class="info_fitness" v-for="item in appointments" :key="item.id">
+        <p>You have fitness appointment at {{ item.appointment }} in hall_{{ item.fitness_hall }}</p>
       </div>
-      <div class="persent_block" v-on:click="display_none">
-      </div>
-
-      <div class="halls">
-        <p>Fitness Hall 2 Load</p><button class="book">Cancel</button>
-      </div>
-      <div class="persent_block"></div>
+      <HallWidgetComponent v-for="hall in halls" :key="hall.id" :num="halls.indexOf(hall)+1" :id="hall.id"/>
     </div>
   </div>
-
 </template>
-
 <script>
+import HallWidgetComponent from './HallWidgetComponent.vue'
 export default {
+  components: { HallWidgetComponent },
   data() {
     return {
       visible: false,
@@ -46,62 +34,102 @@ export default {
       fitness_hall: "",
       appo_date: "",
       appointments: [],
-      // current_date: new Date().getDate() + "/" + new Date().getMonth() + "/" + new Date().getFullYear(),
-      arr: [
-        { id: 1, appointment: true, fitness_hall: 5 },
-        { id: 2, appointment: true, fitness_hall: 5 },
-        { id: 3, appointment: true, fitness_hall: 5 },
-        { id: 4, appointment: true, fitness_hall: 5 },
-      ]
+      current_id: "",
+      halls:[],
+      halls_details:[]
     }
   },
+  props: [],
   methods: {
-    change_vision() {
+    // sendToAuthopage(){
+    //   fetch(process.env.VUE_APP_API_DOMAIN+"/fitness/list_halls/")
+    // },
+    showHalls(){
+      let token = localStorage.getItem("access")
+      fetch(process.env.VUE_APP_API_DOMAIN + "/fitness/list_halls/",
+        {
+          method: "GET",
+          headers: { "Authorization": `Bearer ${token}`}
+        })
+        .then(res => {
+          if(res.status == "401"){
+            localStorage.removeItem("access")
+            localStorage.removeItem("refresh")
+            this.$router.push("/loginpage")
+          }else{
+           return res.json()
+          }
+          })
+        .then(data => this.halls = data)
+    },
+    userProfile(){
+      let token = localStorage.getItem("access");
+
+      fetch(process.env.VUE_APP_API_DOMAIN + "/user/profile/",
+        {
+          method: 'GET',
+          headers: { "Authorization": `Bearer ${token}`}
+        })
+        .then(res => {
+          if(res.status=="401"){
+            localStorage.removeItem("access")
+            localStorage.removeItem("refresh")
+            this.$router.push("/loginpage")
+          }else{
+            return  res.json()
+          }
+         })
+        .then(data => {
+          this.first_name = data.first_name.charAt(0).toUpperCase() + data.first_name.slice(1)
+          this.last_name = data.last_name.charAt(0).toUpperCase() + data.last_name.slice(1)
+        })
+    },
+    toScheduleappo(){
+      this.$router.push("/scheduleappo")
+    },
+    toCancel() {
+      this.$router.push(`/schedulecancel/${this.current_id}`)
+    },
+    change_vision(){
       this.visible = !this.visible
     },
-    redirect_profile() {
+    redirect_profile(){
       this.$router.push("/profile")
     },
-    redirect_home() {
+    redirect_home(){
       this.$router.push("/")
       localStorage.clear()
     },
     checkDate(date) {
       return new Date().toDateString() === new Date(date).toDateString()
+    },
+    loadUserProf() {
+      let token = localStorage.getItem("access");
+      fetch(process.env.VUE_APP_API_DOMAIN + "/fitness/check_appointment/",
+        {
+          method: "GET",
+          headers: { "Authorization": `Bearer ${token}` }
+        }
+      )
+        .then(res => res.json())
+        .then(data => {
+          this.appointments = data
+          this.current_id = data.id
+          console.log(data)
+            .filter(item => item.has_appointment && this.checkDate(item.appointment))
+            .map(item => {
+              const newDate = `${new Date(item.appointment).getHours()}:${new Date(item.appointment).getMinutes()}`
+              return {
+                ...item,
+                appointment: newDate
+              }
+            })
+        })
     }
   },
   created() {
-    console.log(this.checkDate("2022-11-15T12:49:28.209Z"))
-    console.log(this.data_from_bd)
-    let token = localStorage.getItem("access");
-    fetch(process.env.VUE_APP_API_DOMAIN + "/user/profile/",
-      {
-        method: 'GET',
-        headers: { "Authorization": `Bearer ${token}` }
-      })
-      .then(res => res.json())
-      .then(data => {
-        this.first_name = data.first_name.charAt(0).toUpperCase() + data.first_name.slice(1)
-        this.last_name = data.last_name.charAt(0).toUpperCase() + data.last_name.slice(1)
-      })
-    fetch(process.env.VUE_APP_API_DOMAIN + "/fitness/check_appointment/",
-      {
-        method: "GET",
-        headers: { "Authorization": `Bearer ${token}` }
-      }
-    )
-      .then(res => res.json())
-      .then(data => {
-        this.appointments = data
-        .filter( item => item.has_appointment && this.checkDate(item.appointment))
-        .map(item => {
-          const newDate = `${new Date(item.appointment).getHours()}:${new Date(item.appointment).getMinutes()}`
-          return {
-            ...item,
-            appointment: newDate
-          }
-        })
-      })
+    this.userProfile()
+    this.showHalls();
   }
 }
 </script>
@@ -243,7 +271,7 @@ a {
 .persent_block {
   width: 315px;
   height: 160px;
-  background-color: lightgrey;
+  /* background-color: lightgrey; */
   margin-top: 15px;
 }
 
