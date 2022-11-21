@@ -58,7 +58,7 @@ const routes = [
     component: ScheduleAppointment
   },
   {
-    path: "/schedulecancel",
+    path: "/schedulecancel/:id",
     name:"schedulecancel",
     component: ScheduleCancel
   }
